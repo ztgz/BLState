@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32126.317
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLState", "BLState\BLState.csproj", "{E7655296-1547-4449-86E6-F6AC795DABC3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E7655296-1547-4449-86E6-F6AC795DABC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7655296-1547-4449-86E6-F6AC795DABC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7655296-1547-4449-86E6-F6AC795DABC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7655296-1547-4449-86E6-F6AC795DABC3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CA98969C-76DD-4C59-B975-141E15C32C50}
+	EndGlobalSection
+EndGlobal
