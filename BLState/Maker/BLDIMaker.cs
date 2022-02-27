@@ -20,7 +20,7 @@ namespace {BLTemplates.GeneratedNameSpace}
 {{
     public static class BLStoreSetup
     {{
-        public static IServiceCollection InitializeBStore(this IServiceCollection services)
+        public static IServiceCollection InitializeBLStore(this IServiceCollection services)
         {{
 {string.Join("\n\r", storeContent)}
             return services;
