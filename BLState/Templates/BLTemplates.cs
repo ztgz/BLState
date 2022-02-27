@@ -46,7 +46,6 @@ namespace BLState
     }
 }";
 
-
         internal static string MakeBLProperty(string fieldName, string propertyName, string propertyType) =>
 $@"
         public {propertyType} {propertyName}
