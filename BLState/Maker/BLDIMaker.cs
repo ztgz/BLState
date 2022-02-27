@@ -18,7 +18,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace {BLTemplates.GeneratedNameSpace}
 {{
-    public static class BStoreSetup
+    public static class BLStoreSetup
     {{
         public static IServiceCollection InitializeBStore(this IServiceCollection services)
         {{
