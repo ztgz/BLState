@@ -36,20 +36,12 @@ namespace BLState
 
         public void Unsubscribe(Action onStoreUpdate)
         {
-            try
-            {
-                onChange -= onStoreUpdate;
-            }
-            catch { }
+            onChange -= onStoreUpdate;
         }
 
         protected void InvokeUpdates()
         {
-            try
-            {
-                onChange?.Invoke();
-            }
-            catch { }
+            onChange?.Invoke();
         }
     }
 }";
