@@ -18,7 +18,6 @@ namespace BLState.AttributeUtils
                 .Any(attributeList => attributeList.HasAttribute(attributeName));
         }
 
-
         internal static bool HasAttribute(this AttributeListSyntax attributeListSyntax, string attributeName)
         {
             return attributeListSyntax.Attributes
@@ -33,6 +32,5 @@ namespace BLState.AttributeUtils
                 || trimmed.Equals($"{BLTemplates.GeneratedNameSpace}.{attributeName}");
 
         }
-
     }
 }

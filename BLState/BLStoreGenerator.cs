@@ -49,11 +49,7 @@ namespace BLState
 
         public void Initialize(GeneratorInitializationContext context)
         {
-            context.RegisterForPostInitialization(i =>
-            {
-                i.AddSource("BLStoreAttributes.g", BLTemplates.BLAttributeClass);
-                i.AddSource("BLStoreBase.g", BLTemplates.BLStoreBaseClass);
-            });  
+            // No need for code
         }
     }
 }

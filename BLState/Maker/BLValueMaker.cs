@@ -69,6 +69,5 @@ namespace BLState.Maker
 
             throw new Exception($"BLValue {input} is not a valid field name. It must contain atleast one lowercase character");
         }
-
     }
 }
