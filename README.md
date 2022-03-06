@@ -22,7 +22,7 @@ builder.Services.InitializeBLStore();
 ```
 
 ### Add a Store
-Create a **partial** class and anotate it with the attribute [BLStore]. For each value in the store add a private field with the annotaion BLValue.
+Create a **public partial** class and anotate it with the attribute [BLStore]. For each value in the store add a private field with the annotaion BLValue.
 ```
 using BLState;
 
@@ -61,6 +61,24 @@ To use in a component
        CountStore.Count *= CountStore.Multiplier;
    }
 }
+```
+
+### Trigger update on reference type
+When making a change to a reference type without changing the actual reference the store needs to be told that a update occured.
+To manually trigger that the store has been updated call the method InvokeUpdates on the store.
+
+```
+[BLStore]
+public partial class UserStore
+{
+    [BLValue]private List<string> names = new List<string>();
+}
+```
+In component
+
+```
+UserStore.Names.Add("Scott");
+UserStore.InvokeUpdates();
 ```
 
 ### Custom property names

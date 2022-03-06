@@ -10,7 +10,7 @@
         public void Unsubscribe(Action onStoreUpdate) =>
             onChange -= onStoreUpdate;
 
-        protected void InvokeUpdates() =>
+        public void InvokeUpdates() =>
             onChange?.Invoke();
     }
 }
