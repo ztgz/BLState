@@ -6,6 +6,14 @@
 		<Nullable>enable</Nullable>
 	</PropertyGroup>
 
+	<PropertyGroup>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<PackageProjectUrl>https://github.com/ztgz/BLState</PackageProjectUrl>
+		<PackageTags>Blazor, State Management</PackageTags>
+		<Description>A library for creating state stores in blazor and easily let components subscribe to updates in the stores.</Description>
+		<Title>BLState</Title>
+	</PropertyGroup>
+	
 	<ItemGroup>
 		<ProjectReference Include="..\BLState\BLState.Generator.csproj" PrivateAssets="All" />
 	</ItemGroup>
@@ -13,7 +21,6 @@
 	<ItemGroup>
 		<None Include="$(OutputPath)\BLState.Generator.dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
 		<None Include="$(OutputPath)\$(AssemblyName).dll" Pack="true" PackagePath="lib\net6.0" Visible="true" />
-
 	</ItemGroup>
 
 	<ItemGroup>
