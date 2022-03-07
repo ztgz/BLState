@@ -1,16 +1,15 @@
-﻿namespace BLState
+﻿namespace BLState;
+
+public abstract class BLStoreBase
 {
-    public abstract class BLStoreBase
-    {
-        private event Action? onChange = null;
+    private event Action? onChange = null;
 
-        public void Subscribe(Action onStoreUpdate) =>
-            onChange += onStoreUpdate;
+    public void Subscribe(Action onStoreUpdate) =>
+        onChange += onStoreUpdate;
 
-        public void Unsubscribe(Action onStoreUpdate) =>
-            onChange -= onStoreUpdate;
+    public void Unsubscribe(Action onStoreUpdate) =>
+        onChange -= onStoreUpdate;
 
-        public void InvokeUpdates() =>
-            onChange?.Invoke();
-    }
+    public void InvokeUpdates() =>
+        onChange?.Invoke();
 }

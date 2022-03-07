@@ -9,13 +9,13 @@ Blazor WASM or Server project based on .NET 6
 - Download the package trough nuget store  
 - Or add via CLI - **dotnet add package BLState**  
 - Or add a reference directly in the project file
-`<PackageReference Include="BLState" Version="0.1.2" />`
+`<PackageReference Include="BLState" Version="0.2.1" />`
 
 **Note: If you are using Visual Studio you probably have to close and re-open Visual Studio after downloading the package to let intellisense catch up.**
 The reason is that this library uses source generators and Visual Studio might not find the files until first restart of the software.
 
 ### Register Services
-First register the stores so they can be used with dependency injection. *Each store registers with a scoped lifetime*
+First register BLState so the stores so they can be used with dependency injection. *It's good to know that each store register with a scoped lifetime*
 ```
 using BLState;
 builder.Services.InitializeBLStore();
@@ -64,9 +64,9 @@ To use in a component
 ```
 
 ### Trigger update on reference type
-When making a change to a reference type without changing the actual reference the store needs to be told that a update occured.
-To manually trigger that the store has been updated call the method InvokeUpdates on the store.
+When making a change to a reference type without changing the actual reference the store needs to be told that a update occured. To do this use the Update or UpdateAsync method.  
 
+Example a store with a list.
 ```
 [BLStore]
 public partial class UserStore
@@ -74,8 +74,21 @@ public partial class UserStore
     [BLValue]private List<string> names = new List<string>();
 }
 ```
-In component
+Then in the compoenent
+```
+using BLState;
+@inject UserStore UserStore
+...
 
+UserStore.Update(x => x.Names.Add("Scott"));
+
+//Or the async variant
+await UserStore.UpdateAsync(async x => x.Names.Add(await GetName()));
+```
+
+
+
+To manually trigger that the store has been updated call the method InvokeUpdates on the store.
 ```
 UserStore.Names.Add("Scott");
 UserStore.InvokeUpdates();

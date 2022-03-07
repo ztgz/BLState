@@ -1,11 +1,10 @@
-﻿namespace BLState
-{
-    [AttributeUsage(AttributeTargets.Class, AllowMultiple = false)]
-    public class BLStoreAttribute : Attribute { }
+﻿namespace BLState;
 
-    [AttributeUsage(AttributeTargets.Field, AllowMultiple = false)]
-    public class BLValueAttribute : Attribute
-    {
-        public string? PropertyName { get; set; }
-    }
+[AttributeUsage(AttributeTargets.Class, AllowMultiple = false)]
+public class BLStoreAttribute : Attribute { }
+
+[AttributeUsage(AttributeTargets.Field, AllowMultiple = false)]
+public class BLValueAttribute : Attribute
+{
+    public string? PropertyName { get; set; }
 }
