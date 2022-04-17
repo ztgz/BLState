@@ -18,7 +18,7 @@ The reason is that this library uses source generators and Visual Studio might n
 First register BLState so the stores so they can be used with dependency injection. *It's good to know that each store register with a scoped lifetime*
 ```
 using BLState;
-builder.Services.InitializeBLStore();
+builder.Services.AddBLStore();
 ```
 
 ### Add a Store
