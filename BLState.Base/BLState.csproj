@@ -12,6 +12,7 @@
 		<PackageTags>Blazor, State Management</PackageTags>
 		<Description>A library for creating state stores in blazor and easily let components subscribe to updates in the stores.</Description>
 		<Title>BLState</Title>
+		<PackageIconUrl>https://raw.githubusercontent.com/ztgz/BLState/main/Icon.png</PackageIconUrl>
 	</PropertyGroup>
 	
 	<ItemGroup>
