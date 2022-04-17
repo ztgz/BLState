@@ -17,21 +17,28 @@ namespace BLState
     {
         public void Execute(GeneratorExecutionContext context)
         {
+            // This list will be used to generate automatic dependency injection for BLStore
             List<BLStoreModel> bLStoreModels = new List<BLStoreModel>();
+            
+            // Create a class
             foreach (var syntaxTree in context.Compilation.SyntaxTrees)
             {
                 var semanticModel = context.Compilation.GetSemanticModel(syntaxTree);
                 foreach (var typeDeclaration in GetStoreTypeDeclarations(syntaxTree))
                 {
+                    var usingDirectives = syntaxTree.GetRoot().DescendantNodes().OfType<UsingDirectiveSyntax>();
+                    
                     string classNamespace = semanticModel.GetDeclaredSymbol(typeDeclaration)
                         .ContainingNamespace?.ToDisplayString();
                     string className = typeDeclaration.Identifier.ToString();
-                    bLStoreModels.Add(new BLStoreModel(className, classNamespace));
                     
                     // Generate store files
-                    var storeClass = BLStoreMaker.CreateBLStore(typeDeclaration, semanticModel, classNamespace);
+                    var storeClass = BLStoreMaker.CreateBLStore(usingDirectives, typeDeclaration, semanticModel, classNamespace);
                     context.AddSource($"{className}.g"
                         , SourceText.From(storeClass, Encoding.UTF8));
+
+                    // The created store needs to be added to dependency injection further down
+                    bLStoreModels.Add(new BLStoreModel(className, classNamespace));
                 }
             }
 
