@@ -9,7 +9,7 @@ Blazor WASM or Server project based on .NET 6
 - Download the package trough nuget store  
 - Or add via CLI - **dotnet add package BLState**  
 - Or add a reference directly in the project file
-`<PackageReference Include="BLState" Version="0.2.1" />`
+`<PackageReference Include="BLState" Version="1.0.0" />`
 
 **Note: If you are using Visual Studio you probably have to close and re-open Visual Studio after downloading the package to let intellisense catch up.**
 The reason is that this library uses source generators and Visual Studio might not find the files until first restart of the software.
