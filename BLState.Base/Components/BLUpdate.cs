@@ -12,6 +12,7 @@ public class BLUpdate : ComponentBase, IDisposable
     [EditorRequired]
     public Action OnUpdate { get; set; } = null!;
 
+
     protected override void OnInitialized()
     {
         if (Store is null)
@@ -19,8 +20,29 @@ public class BLUpdate : ComponentBase, IDisposable
         if (OnUpdate is null)
             throw new ArgumentNullException("Paramter OnUpdate cannot be null");
 
-        Store.Subscribe(OnUpdate);
+        SubscribeToEvents(Store, OnUpdate);
     }
 
-    public void Dispose() => Store.Unsubscribe(OnUpdate);
+    protected override void OnParametersSet()
+    {
+        base.OnParametersSet();
+        if (_store != Store || _onUpdate != OnUpdate)
+        {
+            UnsubscribeToEvents();
+            SubscribeToEvents(Store, OnUpdate);
+        }
+    }
+
+    private BLStoreBase _store = default!;
+    private Action _onUpdate = default!;
+    private void SubscribeToEvents(BLStoreBase store, Action onUpdate)
+    {
+        _store = store;
+        _onUpdate = onUpdate;
+        _store.Subscribe(_onUpdate);
+    }
+
+    private void UnsubscribeToEvents() => _store.Unsubscribe(_onUpdate);
+    
+    public void Dispose() => UnsubscribeToEvents();
 }
