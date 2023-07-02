@@ -1,28 +1,28 @@
 # BLState Simple State Management For Blazor
-Simple source generator library for working with global state and updates in Blazor. Declare stores and its values with attributes.
+Simple source generator library for working with global state and updates in Blazor. Use dataannotations to declare stores and values.
 
 ## Prerequisites
-Blazor WASM or Server project based on .NET 6
+Blazor WASM or Server project based on .NET 6 or higher.
 
 ## How to use BLState
 ### Download package
-- Download the package trough nuget store  
-- Or add via CLI - **dotnet add package BLState**  
-- Or add a reference directly in the project file
-`<PackageReference Include="BLState" Version="1.0.0" />`
+- Download the package trough nuget store.
+- Or add via CLI - **dotnet add package BLState**.
+- Or add a reference directly in the project file.
+`<PackageReference Include="BLState" Version="2.0.0" />`.
 
-**Note: If you are using Visual Studio you probably have to close and re-open Visual Studio after downloading the package to let intellisense catch up.**
-The reason is that this library uses source generators and Visual Studio might not find the files until first restart of the software.
+**Note: If you are using Visual Studio you might have to restart Visual Studio after downloading the package for the first time to trigger start of source generation**
 
 ### Register Services
-First register BLState so the stores so they can be used with dependency injection. *It's good to know that each store register with a scoped lifetime*
+First register BLState so the stores so they can be used with dependency injection. *Each store registers with a scoped lifetime*
 ```
+// In program.cs
 using BLState;
 builder.Services.AddBLStore();
 ```
 
 ### Add a Store
-Create a **public partial** class and anotate it with the attribute [BLStore]. For each value in the store add a private field with the annotaion BLValue.
+Create a **public partial** class and anotate it with the attribute [BLStore]. For each value in the store add a private field with the annotation  BLValue.
 ```
 using BLState;
 
