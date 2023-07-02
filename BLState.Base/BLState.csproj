@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net6.0</TargetFramework>
+		<TargetFrameworks>net7.0;net6.0</TargetFrameworks>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 	</PropertyGroup>
@@ -19,13 +19,21 @@
 		<ProjectReference Include="..\BLState\BLState.Generator.csproj" PrivateAssets="All" />
 	</ItemGroup>
 
-	<ItemGroup>
+	<ItemGroup Condition="'$(TargetFramework)' == 'net6.0' ">
 		<None Include="$(OutputPath)\BLState.Generator.dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
 		<None Include="$(OutputPath)\$(AssemblyName).dll" Pack="true" PackagePath="lib\net6.0" Visible="true" />
 	</ItemGroup>
 
-	<ItemGroup>
+	<ItemGroup Condition="'$(TargetFramework)' == 'net6.0' ">
 	  <PackageReference Include="Microsoft.AspNetCore.Components" Version="6.0.2" />
+	</ItemGroup>	
+
+	<ItemGroup Condition="'$(TargetFramework)' == 'net7.0' ">
+		<None Include="$(OutputPath)\BLState.Generator.dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
+		<None Include="$(OutputPath)\$(AssemblyName).dll" Pack="true" PackagePath="lib\net7.0" Visible="true" />
 	</ItemGroup>
 
+	<ItemGroup Condition="'$(TargetFramework)' == 'net7.0' ">
+	  <PackageReference Include="Microsoft.AspNetCore.Components" Version="7.0.0" />
+	</ItemGroup>
 </Project>
